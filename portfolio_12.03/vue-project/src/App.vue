@@ -80,6 +80,14 @@
                     </span>
                   </div>
                 </div>
+                <div class="mt-4">
+    <a :href="project.link" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="btn btn-primary">
+       <i class="fas fa-external-link-alt me-2"></i>프로젝트 보러가기
+    </a>
+  </div>
               </div>
             </div>
           </div>
@@ -147,7 +155,8 @@ export default {
           period: '2024.10 - 2024.11',
           type: '2인 프로젝트',
           description: '비주류 스포츠 동호회를 위한 커뮤니티 플랫폼',
-          technologies: ['Spring Boot', 'MySQL', 'Vue.js', 'JWT', 'WebSocket']
+          technologies: ['Spring Boot', 'MySQL', 'Vue.js', 'JWT', 'WebSocket'],
+          link: 'https://happysloth0908.github.io/FinalPJT/'
         }
       ]
     }
