@@ -1,102 +1,251 @@
 <!-- App.vue -->
 <template>
-  <div class="min-h-screen bg-gray-100">
-    <!-- Header -->
-    <header class="bg-white shadow-lg">
-      <div class="container mx-auto px-6 py-12">
-        <h1 class="text-4xl font-bold mb-4">홍길동</h1>
-        <p class="text-xl text-gray-600">Backend 개발자</p>
+  <div class="portfolio-wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top py-3">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="#">Portfolio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li v-for="item in navItems" :key="item" class="nav-item">
+              <a class="nav-link px-4 fw-semibold" :href="'#' + item.toLowerCase()">{{ item }}</a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </header>
+    </nav>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12">
-      <!-- Skills Section -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold mb-6">기술 스택</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Backend -->
-          <div class="bg-white rounded-lg shadow p-6">
-            <h3 class="text-xl font-bold mb-4">Backend (중)</h3>
-            <ul class="list-disc pl-5 space-y-2">
-              <li>Spring Boot를 활용한 REST API 구현</li>
-              <li>Spring Security와 JWT 인증/인가</li>
-              <li>JSP 기반 관리자 페이지 개발</li>
-            </ul>
-          </div>
-
-          <!-- Frontend -->
-          <div class="bg-white rounded-lg shadow p-6">
-            <h3 class="text-xl font-bold mb-4">Frontend (하)</h3>
-            <ul class="list-disc pl-5 space-y-2">
-              <li>Vue.js 기반 반응형 웹 개발</li>
-              <li>Node.js/npm 개발 환경 구성</li>
-              <li>HTML5/CSS/JavaScript</li>
-              <li>axios API 연동</li>
-            </ul>
-          </div>
-
-          <!-- Database -->
-          <div class="bg-white rounded-lg shadow p-6">
-            <h3 class="text-xl font-bold mb-4">Database (중)</h3>
-            <ul class="list-disc pl-5 space-y-2">
-              <li>MySQL 데이터베이스 설계</li>
-              <li>MyBatis 데이터 처리</li>
-            </ul>
-          </div>
-
-          <!-- Tools -->
-          <div class="bg-white rounded-lg shadow p-6">
-            <h3 class="text-xl font-bold mb-4">Development Tools (중)</h3>
-            <ul class="list-disc pl-5 space-y-2">
-              <li>Figma - 와이어프레임 설계</li>
-              <li>Git - 버전 관리</li>
-            </ul>
+    <section class="hero min-vh-100 bg-gradient d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8">
+            <h1 class="display-3 fw-bold mb-4">김소운</h1>
+            <p class="lead mb-5">Backend Developer</p>
+            <div class="social-links">
+              <a v-for="social in socials" 
+                 :key="social.icon" 
+                 :href="social.url" 
+                 class="btn btn-light btn-lg rounded-circle mx-2 shadow-sm">
+                <i :class="'fab fa-' + social.icon"></i>
+              </a>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Project Section -->
-      <section>
-        <h2 class="text-2xl font-bold mb-6">프로젝트</h2>
-        <div class="bg-white rounded-lg shadow p-6">
-          <div class="mb-6">
-            <h3 class="text-xl font-bold">ETCO 운동 커뮤니티 웹 사이트</h3>
-            <p class="text-gray-600">2023.10.23 ~ 2023.11.27 (2인 프로젝트)</p>
-          </div>
-
-          <div class="mb-6">
-            <h4 class="font-bold mb-2">프로젝트 개요</h4>
-            <p>비주류 스포츠를 즐기는 사람들을 위한 커뮤니티 플랫폼 개발. 관리자 페이지를 별도 구현하여 효율적인 커뮤니티 관리 시스템 구축</p>
-          </div>
-
-          <div class="mb-6">
-            <h4 class="font-bold mb-2">주요 기능 구현</h4>
-            <ul class="list-disc pl-5 space-y-2">
-              <li>Spring Security/JWT 기반 인증 시스템</li>
-              <li>게시판 CRUD 및 댓글 기능</li>
-              <li>계층형 카테고리 사이드바</li>
-              <li>JSP 기반 관리자 페이지</li>
-              <li>ChatGPT API 연동 챗봇</li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 class="font-bold mb-2">성과 및 배운점</h4>
-            <ul class="list-disc pl-5 space-y-2">
-              <li>체계적인 초기 설계의 중요성 인식</li>
-              <li>팀 협업 시 명확한 의사소통과 코드 리뷰의 중요성 체득</li>
-              <li>Git을 통한 효율적인 버전 관리 경험</li>
-            </ul>
+    <section id="skills" class="py-6">
+      <div class="container">
+        <h2 class="display-6 text-center mb-5">Technical Skills</h2>
+        <div class="row g-4 justify-content-center">
+          <div v-for="skill in skills" :key="skill.title" class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm hover-card">
+              <div class="card-body p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <h3 class="h5 fw-bold mb-0">{{ skill.title }}</h3>
+                  <span class="badge bg-primary px-3 py-2 rounded-pill">{{ skill.level }}</span>
+                </div>
+                <ul class="list-unstyled mb-0">
+                  <li v-for="item in skill.items" :key="item" class="mb-3 d-flex align-items-center">
+                    <i class="fas fa-check-circle text-primary me-2"></i>
+                    {{ item }}
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+
+    <section id="projects" class="bg-light py-6">
+      <div class="container">
+        <h2 class="display-6 text-center mb-5">Projects</h2>
+        <div class="row g-4 justify-content-center">
+          <div v-for="project in projects" :key="project.title" class="col-lg-8">
+            <div class="card border-0 shadow-sm h-100 hover-card">
+              <div class="card-body p-4">
+                <h4 class="fw-bold mb-3">{{ project.title }}</h4>
+                <p class="text-muted">{{ project.period }} | {{ project.type }}</p>
+                <p>{{ project.description }}</p>
+                <div class="mt-4">
+                  <h6 class="fw-bold mb-3">Tech Stack:</h6>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span v-for="tech in project.technologies" 
+                          :key="tech" 
+                          class="badge bg-primary bg-opacity-10 text-primary px-3 py-2">
+                      {{ tech }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-6">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="display-6 mb-4">Contact Me</h2>
+          <p class="lead mb-5">새로운 기회를 기다리고 있습니다</p>
+          <a href="mailto:email@example.com" class="btn btn-primary btn-lg px-5 py-3 rounded-pill">
+            <i class="fas fa-envelope me-2"></i>Get In Touch
+          </a>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Portfolio'
+  name: 'Portfolio',
+  data() {
+    return {
+      navItems: ['Home', 'Skills', 'Projects', 'Contact'],
+      socials: [
+        { icon: 'github', url: 'https://github.com/happysloth0908' },
+        // { icon: 'linkedin', url: '#' },
+        // { icon: 'twitter', url: '#' }
+      ],
+      skills: [
+        {
+          title: 'Backend Development',
+          level: '중급',
+          items: [
+            'Spring Boot - REST API 개발',
+            'Spring Security & JWT 인증',
+            'JSP 기반 관리자 페이지'
+          ]
+        },
+        {
+          title: 'Frontend Development',
+          level: '초급',
+          items: [
+            'Vue.js & React',
+            'HTML5/CSS/JavaScript',
+            'RESTful API 연동'
+          ]
+        },
+        {
+   title: 'Database',
+   level: '중급',
+   items: [
+     'MySQL 설계 및 쿼리 작성',
+     '성능 최적화',
+     'ERD 설계'
+   ]
+ }
+      ],
+      projects: [
+        {
+          title: 'ETCO 운동 커뮤니티',
+          period: '2023.10 - 2023.11',
+          type: '2인 프로젝트',
+          description: '비주류 스포츠 동호회를 위한 커뮤니티 플랫폼',
+          technologies: ['Spring Boot', 'MySQL', 'Vue.js', 'JWT', 'WebSocket']
+        }
+      ]
+    }
+  }
 }
 </script>
+
+<style>
+@import 'bootstrap/dist/css/bootstrap.min.css';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+.portfolio-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+nav, section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.container {
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (min-width: 1400px) {
+  nav, section {
+    padding: 0 2rem;
+  }
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.hover-card {
+  transition: transform 0.3s ease;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+}
+
+.navbar .nav-link {
+  position: relative;
+}
+
+.navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0d6efd;
+  transition: width 0.3s ease;
+}
+
+.navbar .nav-link:hover::after {
+  width: 100%;
+}
+
+.social-links .btn {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  line-height: 50px;
+  transition: all 0.3s ease;
+}
+
+.social-links .btn:hover {
+  transform: translateY(-3px);
+  color: #0d6efd;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.py-6 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+</style>
