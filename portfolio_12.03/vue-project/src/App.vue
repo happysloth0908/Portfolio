@@ -92,7 +92,7 @@
         <div class="text-center">
           <h2 class="display-6 mb-4">Contact Me</h2>
           <p class="lead mb-5">새로운 기회를 기다리고 있습니다</p>
-          <a href="mailto:email@example.com" class="btn btn-primary btn-lg px-5 py-3 rounded-pill">
+          <a href="mailto:sozzykim@naver.com" class="btn btn-primary btn-lg px-5 py-3 rounded-pill">
             <i class="fas fa-envelope me-2"></i>Get In Touch
           </a>
         </div>
@@ -144,7 +144,7 @@ export default {
       projects: [
         {
           title: 'ETCO 운동 커뮤니티',
-          period: '2023.10 - 2023.11',
+          period: '2024.10 - 2024.11',
           type: '2인 프로젝트',
           description: '비주류 스포츠 동호회를 위한 커뮤니티 플랫폼',
           technologies: ['Spring Boot', 'MySQL', 'Vue.js', 'JWT', 'WebSocket']
